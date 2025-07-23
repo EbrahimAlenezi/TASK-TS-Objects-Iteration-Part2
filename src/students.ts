@@ -85,9 +85,11 @@ function getStudentName(student: Student): string {
  *  getCourse(students[4], 2); // => "Music"
  */
 function getCourse(student: Student, courseIndex: number): string {
-  // write your code here...
+  if (courseIndex >= student.courses.length) {
+    return "NA";
+  }
 
-  return ""; // replace empty string with what you see is fit
+  return student.courses[courseIndex]; // replace empty string with what you see is fit
 }
 
 /**
@@ -102,7 +104,7 @@ function getCourse(student: Student, courseIndex: number): string {
  *    // => { id: 8, name: "Helen", courses: ["History", "Art", "PE", "Physics"] }
  */
 function addCourseToStudent(student: Student, course: string): Student {
-  // write your code here...
+  student.courses.push(course); // write your code here...
 
   return student;
 }
@@ -117,7 +119,7 @@ function addCourseToStudent(student: Student, course: string): Student {
 function countCourses(student: Student): number {
   // write your code here...
 
-  return -1; // replace -1 with what you see is fit
+  return student.courses.length; // replace -1 with what you see is fit
 }
 
 /**
@@ -133,7 +135,9 @@ function countCourses(student: Student): number {
  */
 function removeCourseFromStudent(student: Student, course: string): Student {
   // write your code here...
-
+  student.courses = student.courses.filter(
+    (currentCourse) => currentCourse! == course
+  );
   return student;
 }
 
@@ -156,7 +160,7 @@ function findStudentById(
 ): Student | undefined {
   // write your code here...
 
-  return undefined; // replace undefined with what you see is fit
+  return students.find((student) => student.id === studentId); // replace undefined with what you see is fit
 }
 
 export {
